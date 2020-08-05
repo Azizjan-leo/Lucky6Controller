@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="216-2165467_connection-png-page-network-effect-transparent-png.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="216-2165467_connection-png-page-network-effect-transparent-png.png" />
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,53 @@
         mc:Ignorable="d"
         Title="Lucky 6 Remote Controller" Height="450" Width="800">
     <Grid>
-        <Button Content="Do it!" HorizontalAlignment="Left" Margin="302,196,0,0" VerticalAlignment="Top"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="85,128,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="AvaPosXTxt" HorizontalAlignment="Left" Margin="601,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
+        <Label x:Name="HostLbl" Content="Host" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="PortLbl" Content="Port" HorizontalAlignment="Left" Margin="25,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ReconnectBtn" Content="Reconnect" HorizontalAlignment="Left" Margin="25,72,0,0" VerticalAlignment="Top" Click="ReconnectBtn_Click"/>
+        <ComboBox x:Name="GameModeCbx" HorizontalAlignment="Left" Margin="321,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem>Lotto</ComboBoxItem>
+            <ComboBoxItem>Spin The Wheel</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Game mode:" HorizontalAlignment="Left" Margin="246,16,0,0" VerticalAlignment="Top"/>
+        <Label Content="Spin The Wheel mode:" HorizontalAlignment="Left" Margin="441,16,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="STWModeCbx" IsEnabled="False" HorizontalAlignment="Left" Margin="567,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="STWCbx_SelectionChanged">
+            <ComboBoxItem>Two Wheels</ComboBoxItem>
+            <ComboBoxItem>Left Wheel</ComboBoxItem>
+            <ComboBoxItem>Right Wheel</ComboBoxItem>
+        </ComboBox>
+        <CheckBox Content="Show Avatar" HorizontalAlignment="Left" Margin="246,80,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+        <ComboBox x:Name="TriggerAvatarCbx" HorizontalAlignment="Left" Margin="444,70,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TriggerAvatarCbx_SelectionChanged">
+            <ComboBoxItem>Clap</ComboBoxItem>
+            <ComboBoxItem>Cheer</ComboBoxItem>
+            <ComboBoxItem>Talking</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Trigger Avatar" HorizontalAlignment="Left" Margin="355,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="animation" HorizontalAlignment="Left" Margin="567,70,0,0" VerticalAlignment="Top"/>
+        <ScrollBar HorizontalAlignment="Left" Margin="377,72,0,0"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"
+                   x:Name="AvatarScaleSrlBar" Minimum="1" Maximum="10" Value="5" SmallChange="1" Height="118" Scroll="AvatarScaleSrlBar_Scroll" >
+            <ScrollBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ScrollBar.RenderTransform>
+        </ScrollBar>
+        <Label Content="Avatar scale:" HorizontalAlignment="Left" Margin="246,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="AvaScaleLbl" Content="5" HorizontalAlignment="Left" Margin="446,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="Avatar position:" HorizontalAlignment="Left" Margin="488,120,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AvaPosYTxt" HorizontalAlignment="Left" Margin="691,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
+        <Label Content="x:" HorizontalAlignment="Left" Margin="578,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="y:" HorizontalAlignment="Left" Margin="668,120,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SetAvaPosBtn" Click="SetAvaPosBtn_Click" Content="Ok" HorizontalAlignment="Left" Margin="760,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="Zoom to" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ZoomCbx" HorizontalAlignment="Left" Margin="307,160,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ZoomCbx_SelectionChanged">
+            <ComboBoxItem>Screen</ComboBoxItem>
+            <ComboBoxItem>Model</ComboBoxItem>
+        </ComboBox>
 
     </Grid>
 </Window>
