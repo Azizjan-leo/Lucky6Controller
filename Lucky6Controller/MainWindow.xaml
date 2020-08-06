@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Lucky6Controller"
         mc:Ignorable="d"
-        Title="Lucky 6 Remote Controller" Height="356" Width="800">
+        Title="Lucky 6 Remote Controller" Height="388" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="146*"/>
