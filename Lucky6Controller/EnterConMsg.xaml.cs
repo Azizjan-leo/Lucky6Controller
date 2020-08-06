@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Lucky6Controller
 {
@@ -20,7 +11,8 @@ namespace Lucky6Controller
 		public EnterConMsg(string defPort, string defHost)
 		{
 			InitializeComponent();
-
+			Host = defHost;
+			Port = defPort;
 		}
 
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
@@ -36,10 +28,12 @@ namespace Lucky6Controller
 
 		public string Host
 		{
+            set { txtHost.Text = value; }
 			get { return txtHost.Text; }
 		}
 		public string Port
 		{
+			set { txtPort.Text = value; }
 			get { return txtPort.Text; }
 		}
 	}

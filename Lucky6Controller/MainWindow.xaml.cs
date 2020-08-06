@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace Lucky6Controller
 {
@@ -21,14 +23,13 @@ namespace Lucky6Controller
         private int _port;
         private readonly ConcurrentQueue<string> _messages = new ConcurrentQueue<string>();
         private bool _isConnected;
+        private string _drawBallColor = "red";
 
         public MainWindow()
         {
             InitializeComponent();
             Loaded += Window_Loaded;
-            Connect();
-                        
-       
+            Connect();       
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -82,9 +83,9 @@ namespace Lucky6Controller
 
        
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SetNumOfBallsToPick_Click(object sender, RoutedEventArgs e)
         {
-
+            Send("NumberOfBallsToPick:" + NumOfBallsToPickTxt.Text);
         }
 
         private void CloseSocket()
@@ -165,6 +166,45 @@ namespace Lucky6Controller
         private void ZoomCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Send("ZoomTo" + ((sender as ComboBox).SelectedIndex == 0 ? "Screen" : "Model"));
+        }
+
+        private void DrawBallColorBtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog colorDialog = new System.Windows.Forms.ColorDialog();
+            if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                DrawBallColorBtn.Background = new SolidColorBrush(Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
+                _drawBallColor = colorDialog.Color.Name.ToLower();
+            }
+        }
+
+        private void DrawBall_Click(object sender, RoutedEventArgs e)
+        {
+            Send($"DrawBall:{DrawBallTxt.Text}:{_drawBallColor}");
+
+        }
+
+        private void NewGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Send("NewGame");
+        }
+
+        private void DelayAfterEachBallBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Send("delayAfterEachBall:" + DelayAfterEachBallTxt.Text);
+        }
+
+        private void SpinTheWheelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpinTheWheelCbx.SelectedIndex == 0)
+                Send("Spin1:" + SpinTheWheelToTxt.Text);
+            else
+                Send("Spin2:" + SpinTheWheelToTxt.Text);
+        }
+
+        private void SetBackgroundBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Send("SetBackground:" + SetBackgroundTxt.Text);
         }
     }
 }

@@ -3,36 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Lucky6Controller"
         mc:Ignorable="d"
-        Title="Lucky 6 Remote Controller" Height="450" Width="800">
+        Title="Lucky 6 Remote Controller" Height="356" Width="800">
     <Grid>
-        <Button Content="" HorizontalAlignment="Left" Margin="85,128,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox x:Name="AvaPosXTxt" HorizontalAlignment="Left" Margin="601,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="209*"/>
+            <ColumnDefinition Width="45*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="SetNumOfBallsToPick" Content="Ok" HorizontalAlignment="Left" Margin="370,161,0,0" VerticalAlignment="Top" Click="SetNumOfBallsToPick_Click" Width="34" Grid.Column="1"/>
+        <TextBox x:Name="AvaPosXTxt" HorizontalAlignment="Left" Margin="309,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Grid.Column="1"/>
         <Label x:Name="HostLbl" Content="Host" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="PortLbl" Content="Port" HorizontalAlignment="Left" Margin="25,41,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ReconnectBtn" Content="Reconnect" HorizontalAlignment="Left" Margin="25,72,0,0" VerticalAlignment="Top" Click="ReconnectBtn_Click"/>
-        <ComboBox x:Name="GameModeCbx" HorizontalAlignment="Left" Margin="321,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox x:Name="GameModeCbx" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
             <ComboBoxItem>Lotto</ComboBoxItem>
             <ComboBoxItem>Spin The Wheel</ComboBoxItem>
         </ComboBox>
-        <Label Content="Game mode:" HorizontalAlignment="Left" Margin="246,16,0,0" VerticalAlignment="Top"/>
-        <Label Content="Spin The Wheel mode:" HorizontalAlignment="Left" Margin="441,16,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="STWModeCbx" IsEnabled="False" HorizontalAlignment="Left" Margin="567,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="STWCbx_SelectionChanged">
+        <Label Content="Game mode:" HorizontalAlignment="Left" Margin="246,16,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Spin The Wheel mode:" HorizontalAlignment="Left" Margin="149,16,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox x:Name="STWModeCbx" IsEnabled="False" HorizontalAlignment="Left" Margin="275,20,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="STWCbx_SelectionChanged" Grid.Column="1">
             <ComboBoxItem>Two Wheels</ComboBoxItem>
             <ComboBoxItem>Left Wheel</ComboBoxItem>
             <ComboBoxItem>Right Wheel</ComboBoxItem>
         </ComboBox>
-        <CheckBox Content="Show Avatar" HorizontalAlignment="Left" Margin="246,80,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
-        <ComboBox x:Name="TriggerAvatarCbx" HorizontalAlignment="Left" Margin="444,70,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TriggerAvatarCbx_SelectionChanged">
+        <CheckBox Content="Show Avatar" HorizontalAlignment="Left" Margin="246,80,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="TriggerAvatarCbx" HorizontalAlignment="Left" Margin="152,70,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TriggerAvatarCbx_SelectionChanged" Grid.Column="1">
             <ComboBoxItem>Clap</ComboBoxItem>
             <ComboBoxItem>Cheer</ComboBoxItem>
             <ComboBoxItem>Talking</ComboBoxItem>
         </ComboBox>
-        <Label Content="Trigger Avatar" HorizontalAlignment="Left" Margin="355,70,0,0" VerticalAlignment="Top"/>
-        <Label Content="animation" HorizontalAlignment="Left" Margin="567,70,0,0" VerticalAlignment="Top"/>
-        <ScrollBar HorizontalAlignment="Left" Margin="377,72,0,0"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"
-                   x:Name="AvatarScaleSrlBar" Minimum="1" Maximum="10" Value="5" SmallChange="1" Height="118" Scroll="AvatarScaleSrlBar_Scroll" >
+        <Label Content="Trigger Avatar" HorizontalAlignment="Left" Margin="63,70,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="animation" HorizontalAlignment="Left" Margin="275,70,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ScrollBar HorizontalAlignment="Left" Margin="85,72,0,0"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"
+                   x:Name="AvatarScaleSrlBar" Minimum="1" Maximum="10" Value="5" SmallChange="1" Height="118" Scroll="AvatarScaleSrlBar_Scroll" Grid.Column="1" >
             <ScrollBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -42,18 +48,39 @@
                 </TransformGroup>
             </ScrollBar.RenderTransform>
         </ScrollBar>
-        <Label Content="Avatar scale:" HorizontalAlignment="Left" Margin="246,120,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="AvaScaleLbl" Content="5" HorizontalAlignment="Left" Margin="446,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="Avatar position:" HorizontalAlignment="Left" Margin="488,120,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="AvaPosYTxt" HorizontalAlignment="Left" Margin="691,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
-        <Label Content="x:" HorizontalAlignment="Left" Margin="578,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="y:" HorizontalAlignment="Left" Margin="668,120,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="SetAvaPosBtn" Click="SetAvaPosBtn_Click" Content="Ok" HorizontalAlignment="Left" Margin="760,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="Zoom to" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="ZoomCbx" HorizontalAlignment="Left" Margin="307,160,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ZoomCbx_SelectionChanged">
+        <Label Content="Avatar scale:" HorizontalAlignment="Left" Margin="246,120,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="AvaScaleLbl" Content="5" HorizontalAlignment="Left" Margin="154,120,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Avatar position:" HorizontalAlignment="Left" Margin="196,120,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="AvaPosYTxt" HorizontalAlignment="Left" Margin="399,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label Content="x:" HorizontalAlignment="Left" Margin="286,120,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="y:" HorizontalAlignment="Left" Margin="376,120,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="SetAvaPosBtn" Click="SetAvaPosBtn_Click" Content="Ok" HorizontalAlignment="Left" Margin="50,120,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Zoom to" HorizontalAlignment="Left" Margin="246,162,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ZoomCbx" HorizontalAlignment="Left" Margin="15,160,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ZoomCbx_SelectionChanged" Grid.Column="1">
             <ComboBoxItem>Screen</ComboBoxItem>
             <ComboBoxItem>Model</ComboBoxItem>
         </ComboBox>
+        <Label Content="Number of balls to pick:" HorizontalAlignment="Left" Margin="172,158,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="NumOfBallsToPickTxt" HorizontalAlignment="Left" Margin="314,162,0,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Grid.Column="1"/>
+        <Button x:Name="DrawBallBtn" Content="Draw ball" HorizontalAlignment="Left" Margin="16,215,0,0" VerticalAlignment="Top" Click="DrawBall_Click" Width="59" Grid.Column="1"/>
+        <TextBox x:Name="DrawBallTxt" HorizontalAlignment="Left" Margin="246,215,0,0" Text="21" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="20"/>
+        <Button x:Name="DrawBallColorBtn" Click="DrawBallColorBtn_Click" Width="20" Height="20" HorizontalAlignment="Left" Margin="278,215,0,0" VerticalAlignment="Top" Background="Red" Grid.ColumnSpan="2"/>
+        <Button x:Name="NewGameBtn" Content="New Game" HorizontalAlignment="Left" Margin="25,105,0,0" VerticalAlignment="Top" Click="NewGameBtn_Click"/>
+        <Label Content="Delay after each ball" HorizontalAlignment="Left" Margin="97,212,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="DelayAfterEachBallTxt"  HorizontalAlignment="Left" Margin="219,216,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Grid.Column="1"/>
+        <Label Content="seconds" HorizontalAlignment="Left" Margin="275,212,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="DelayAfterEachBallBtn" Content="Ok" HorizontalAlignment="Left" Margin="337,212,0,0" VerticalAlignment="Top" Width="34" Click="DelayAfterEachBallBtn_Click" Grid.Column="1"/>
+        <Label Content="Spin the" HorizontalAlignment="Left" Margin="246,263,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="SpinTheWheelCbx" HorizontalAlignment="Left" Margin="19,265,0,0" VerticalAlignment="Top" Width="90" Grid.Column="1">
+            <ComboBoxItem IsSelected="True">Left</ComboBoxItem>
+            <ComboBoxItem>Right</ComboBoxItem>
+        </ComboBox>
+        <Label Content="wheel to " HorizontalAlignment="Left" Margin="114,263,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="SpinTheWheelToTxt" HorizontalAlignment="Left" Margin="173,267,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" Grid.Column="1"/>
+        <Button x:Name="SpinTheWheelBtn" Content="Ok" HorizontalAlignment="Left" Margin="205,265,0,0" VerticalAlignment="Top" Width="34" Click="SpinTheWheelBtn_Click" Grid.Column="1" />
+        <Label Content="Set background:" HorizontalAlignment="Left" Margin="246,304,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="SetBackgroundTxt" HorizontalAlignment="Left" Margin="55,308,0,0" Text="background1.png" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button x:Name="SetBackgroundBtn" Content="Ok" HorizontalAlignment="Left" Margin="186,306,0,0" VerticalAlignment="Top" Width="34" Click="SetBackgroundBtn_Click" Grid.Column="1" />
 
     </Grid>
 </Window>
